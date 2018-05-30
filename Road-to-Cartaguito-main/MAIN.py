@@ -36,53 +36,53 @@ all_sprites.add(bullet)
 running = True
 
 while running:
-         clock.tick(fps)
+    clock.tick(fps)
          
-         #check events 
-         for event in pg.event.get():
-                  if event.type == pg.QUIT: 
-                           sys.exit()        
-                  elif event.type == pg.KEYDOWN:               
-                           if event.key == pg.K_LEFT:
-                                    pressed_left = True
-                           elif event.key == pg.K_RIGHT:     
-                                    pressed_right = True
-                           elif event.key == pg.K_UP:       
-                                    pressed_up = True
-                           elif event.key == pg.K_DOWN:    
-                                    pressed_down = True
-                  elif event.type == pg.KEYUP:           
-                           if event.key == pg.K_LEFT:
-                                    pressed_left = False
-                           elif event.key == pg.K_RIGHT:
-                                    pressed_right = False
-                           elif event.key == pg.K_UP:        
-                                    pressed_up = False
-                           elif event.key == pg.K_DOWN:     
-                                    pressed_down = False
+     #check events
+    for event in pg.event.get():
+        if event.type == pg.QUIT: 
+            sys.exit()        
+        elif event.type == pg.KEYDOWN:               
+            if event.key == pg.K_LEFT:
+                pressed_left = True
+            elif event.key == pg.K_RIGHT:     
+                pressed_right = True
+            elif event.key == pg.K_UP:       
+                pressed_up = True
+            elif event.key == pg.K_DOWN:    
+                pressed_down = True
+        elif event.type == pg.KEYUP:           
+            if event.key == pg.K_LEFT:
+                pressed_left = False
+            elif event.key == pg.K_RIGHT:
+                pressed_right = False
+            elif event.key == pg.K_UP:        
+                pressed_up = False
+            elif event.key == pg.K_DOWN:     
+                pressed_down = False
 
-         if pressed_up and pressed_right:
-                  Player.moveUp(), Player.moveRight()
-         if pressed_up and pressed_left  :
-                  Player.moveUp(), Player.moveLeft()
-         if pressed_down and pressed_right:
-                  Player.moveDown(), Player.moveRight()
-         if pressed_down and pressed_left:
-                  Player.moveDown(), Player.moveLeft()
-         if pressed_up:
-             Player.moveUp()
-         if pressed_down:
-             Player.moveDown()
-         if pressed_left:
-             Player.moveLeft()
-         if pressed_right:
-             Player.moveRight()
-                           
-         #update todo
-         all_sprites.update()
-             
-         #draw en la pantalla
-         all_sprites.draw(gameDisplay)
+    if pressed_up and pressed_right:
+        Player.moveUp(), Player.moveRight()
+    if pressed_up and pressed_left  :
+        Player.moveUp(), Player.moveLeft()
+    if pressed_down and pressed_right:
+        Player.moveDown(), Player.moveRight()
+    if pressed_down and pressed_left:
+        Player.moveDown(), Player.moveLeft()
+    if pressed_up:
+        Player.moveUp()
+    if pressed_down:
+        Player.moveDown()
+    if pressed_left:
+        Player.moveLeft()
+    if pressed_right:
+        Player.moveRight()
+                       
+     #update todo
+    all_sprites.update()
+         
+     #draw en la pantalla
+    all_sprites.draw(gameDisplay)
 
 
 
