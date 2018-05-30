@@ -4,6 +4,9 @@ import loader
 import enemy
 import Player
 
+#Inicializar pygame
+pg.init()
+
 #Colors
 white = (255, 255, 255)
 black = (0, 0, 0)
