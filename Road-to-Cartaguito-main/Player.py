@@ -4,14 +4,14 @@ import Disparar
 
 class Player(pg.sprite.Sprite):
     def __init__(self, x, y, angulo, score, img):
-    super().__init__()
-    self.x = x
-    self.y = y
-    self.angulo = angulo
-    self.score = score
-    self.maxSpeed = 5
-    self.delta = 0.25
-    self.img_player = img
+        super().__init__()
+        self.x = x
+        self.y = y
+        self.angulo = angulo
+        self.score = score
+        self.maxSpeed = 5
+        self.delta = 0.25
+        self.img_player = img
 
     #def update()
 
