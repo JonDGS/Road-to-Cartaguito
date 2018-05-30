@@ -6,10 +6,6 @@ import Player
 
 #Inicializar pygame
 pg.init()
-clock = pg.time.Clock()
-S_width = 960
-S_height = 720
-screen = pg.display.set_mode((S_width, S_height))
 
 #Colors
 white = (255, 255, 255)
@@ -20,11 +16,15 @@ blue = (0, 0, 255)
 
 fps = 30
 
-#hacemos un grupo de todos los sprites que se actualizan por fotograma
+displayWidth = 1200
+displayHeight = 900
+gameDisplay = pygame.display.set_mode((displayWidth, displayHeigh))
+clock = pygame.time.Clock()
+
 all_sprites = pygame.sprite.Group()
-#hagregamos los sprites a el grupo
+
 player = Player()
-        ###corregir clase enemy a Enemy
+#corregir clase enemy a Enemy
 enemy = Enemy()
 bullet = Bullet()
 
@@ -38,10 +38,11 @@ running = True
 while running:
     clock.tick(fps)
          
-     #check events
+         #check events y update
     for event in pg.event.get():
         if event.type == pg.QUIT: 
-            sys.exit()        
+            sys.exit()
+            
         elif event.type == pg.KEYDOWN:               
             if event.key == pg.K_LEFT:
                 pressed_left = True
@@ -51,6 +52,7 @@ while running:
                 pressed_up = True
             elif event.key == pg.K_DOWN:    
                 pressed_down = True
+                
         elif event.type == pg.KEYUP:           
             if event.key == pg.K_LEFT:
                 pressed_left = False
@@ -77,11 +79,11 @@ while running:
         Player.moveLeft()
     if pressed_right:
         Player.moveRight()
-                       
-     #update todo
+                           
+         #update todo
     all_sprites.update()
-         
-     #draw en la pantalla
+             
+         #draw en la pantalla
     all_sprites.draw(gameDisplay)
 
 
