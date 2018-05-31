@@ -4,21 +4,20 @@
 # comprobar main y Disparar tienen display variables igual
 
 class Disparar(pg.sprite.Sprite):
-         def __init__(self, x, y, angulo, img_bala):
-                  super().__init__()
-                  self.x = x
-                  self.y = y
-                  self.angulo = angulo
-                  self.bala = img_bala
-                  self.hitpoint = [x, y]
+    def __init__(self, x, y, angulo, img_bala):
+        super().__init__()
+        self.x = x
+        self.y = y
+        self.angulo = angulo
+        self.bala = img_bala
+        self.hitpoint = [x, y]
 
-         def bala(self):
-                  self
-                  if self.rect.top > displayHeight:
-                           self.kill()
-                 elif self.rect.bottom < 0:
-                           self.kill()
-                 elif self.rect.left > displayWidth:
-                           self.kill()
-                elif self.rect.right < 0:
-                         self.kill()
+    def bala(self):
+        if self.rect.top > displayHeight:
+            self.kill()
+        elif self.rect.bottom < 0:
+            self.kill()
+        elif self.rect.left > displayWidth:
+            self.kill()
+        elif self.rect.right < 0:
+            self.kill()
