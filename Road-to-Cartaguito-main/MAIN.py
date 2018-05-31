@@ -46,26 +46,26 @@ while running:
         elif event.type == pg.KEYDOWN:               
             if event.key == pg.K_LEFT:
                 pressed_left = True
-            elif event.key == pg.K_RIGHT:     
+            if event.key == pg.K_RIGHT:
                 pressed_right = True
-            elif event.key == pg.K_UP:       
+            if event.key == pg.K_UP:
                 pressed_up = True
-            elif event.key == pg.K_DOWN:    
+            if event.key == pg.K_DOWN:
                 pressed_down = True
-                
-        elif event.type == pg.KEYUP:           
+
+        elif event.type == pg.KEYUP:
             if event.key == pg.K_LEFT:
                 pressed_left = False
-            elif event.key == pg.K_RIGHT:
+            if event.key == pg.K_RIGHT:
                 pressed_right = False
-            elif event.key == pg.K_UP:        
+            if event.key == pg.K_UP:
                 pressed_up = False
-            elif event.key == pg.K_DOWN:     
+            if event.key == pg.K_DOWN:
                 pressed_down = False
 
     if pressed_up and pressed_right:
         Player.moveUp(), Player.moveRight()
-    if pressed_up and pressed_left  :
+    if pressed_up and pressed_left:
         Player.moveUp(), Player.moveLeft()
     if pressed_down and pressed_right:
         Player.moveDown(), Player.moveRight()
