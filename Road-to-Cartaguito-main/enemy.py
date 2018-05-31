@@ -1,7 +1,8 @@
 import pygame as pg
+import loader
 
 
-class Enemy(pg.sprite.Sprite):
+class eznemy(pg.sprite.Sprite):
     def __init__(self, x, y, image):
         super().__init__()
         self.x = x

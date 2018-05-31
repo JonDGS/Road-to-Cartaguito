@@ -1,8 +1,9 @@
 import pygame as pg
-import time
 import Loader
 import Enemy
 import Player
+import Disparar
+import sys
 
 #Inicializar pg
 pg.init()
@@ -25,7 +26,7 @@ all_sprites = pg.sprite.Group()
 
 player = Player()
 enemy = Enemy()
-bullet = Bullet()
+disparar = Disparar()
 
 all_sprites.add(player)
 all_sprites.add(enemy)

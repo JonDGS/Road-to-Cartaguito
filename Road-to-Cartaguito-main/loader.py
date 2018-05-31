@@ -6,7 +6,6 @@ class Loader(pg.sprite.Sprite):
         self.image = image
         self.angle = angle
 
-
     def rotate(self, image, angle):
         rot = pg.transform.rotate(image, angle)
         return rot
@@ -14,4 +13,3 @@ class Loader(pg.sprite.Sprite):
     def load(self, image):
         img = pg.image.load(image).convert()
         return img
-
