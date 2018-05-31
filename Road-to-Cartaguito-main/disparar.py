@@ -3,6 +3,8 @@
 # def disparar(x, y, angulo, img_bala)
 # comprobar main y Disparar tienen display variables igual
 
+import pygame as pg
+
 class Disparar(pg.sprite.Sprite):
     def __init__(self, x, y, angulo, img_bala):
         super().__init__()
@@ -21,3 +23,4 @@ class Disparar(pg.sprite.Sprite):
             self.kill()
         elif self.rect.right < 0:
             self.kill()
+

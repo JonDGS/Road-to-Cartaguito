@@ -1,10 +1,10 @@
 import pygame as pg
 import time
-import loader
-import enemy
+import Loader
+import Enemy
 import Player
 
-#Inicializar pygame
+#Inicializar pg
 pg.init()
 
 #Colors
@@ -18,13 +18,12 @@ fps = 30
 
 displayWidth = 1200
 displayHeight = 900
-gameDisplay = pygame.display.set_mode((displayWidth, displayHeigh))
-clock = pygame.time.Clock()
+gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
+clock = pg.time.Clock()
 
-all_sprites = pygame.sprite.Group()
+all_sprites = pg.sprite.Group()
 
 player = Player()
-#corregir clase enemy a Enemy
 enemy = Enemy()
 bullet = Bullet()
 
@@ -80,7 +79,7 @@ while running:
     if pressed_right:
         Player.moveRight()
                            
-         #update todo
+    #update todo
     all_sprites.update()
              
          #draw en la pantalla
