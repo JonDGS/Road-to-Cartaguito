@@ -1,5 +1,5 @@
 import pygame as pg
-import loader
+import Loader
 import Disparar
 
 class Player(pg.sprite.Sprite):
@@ -37,8 +37,8 @@ class Player(pg.sprite.Sprite):
                         self.xSpeed += deltaS            # -2 - |   /   \ \|
                     else:                                # -3 - |  /     \ |
                         self.xSpeed = 0                  # -4 - | /       \|
-            else:                                        # -5 - |/.........\......>  tiempo*
-                self.ySpeed -= deltaS
+        else:                                        # -5 - |/.........\......>  tiempo*
+            self.ySpeed -= deltaS
 
 
     def moveDown(self):
@@ -63,8 +63,8 @@ class Player(pg.sprite.Sprite):
                         self.xSpeed += deltaS                
                     else:                                                
                         self.xSpeed = 0                             
-            else:                                             
-                self.ySpeed += deltaS
+        else:                                             
+            self.ySpeed += deltaS
 
 
     def moveLeft(self):
@@ -90,8 +90,8 @@ class Player(pg.sprite.Sprite):
                         self.ySpeed += deltaS       
                     else:                          
                         self.ySpeed = 0               
-            else:                                     
-                self.xSpeed -= deltaS
+        else:
+            self.xSpeed -= deltaS
 
 
     def moveRight(self):
@@ -117,8 +117,8 @@ class Player(pg.sprite.Sprite):
                         self.ySpeed += deltaS                
                     else:                                                
                         self.ySpeed = 0                             
-            else:                                             
-                self.xSpeed += deltaS
+        else:                                             
+            self.xSpeed += deltaS
 
 
     def disparar(self):
