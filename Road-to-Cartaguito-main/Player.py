@@ -12,6 +12,7 @@ class Player(pg.sprite.Sprite):
         self.maxSpeed = 5
         self.delta = 0.25
         self.img_player = img
+        self.rect = self.img_player.image.get_rect()
 
     #def update()
 

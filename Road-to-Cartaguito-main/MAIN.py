@@ -1,9 +1,11 @@
 import pygame as pg
-import Loader
-import Enemy
+import loader
+import enemy
 import Player
-import Disparar
+import disparar
 import sys
+import Tools
+
 
 #Inicializar pg
 pg.init()
@@ -24,9 +26,9 @@ clock = pg.time.Clock()
 
 all_sprites = pg.sprite.Group()
 
-player = Player()
-enemy = Enemy()
-disparar = Disparar()
+player = Player.Player()
+enemy = enemy.Enemy()
+bullet = disparar.Disparar()
 
 all_sprites.add(player)
 all_sprites.add(enemy)
@@ -36,6 +38,8 @@ all_sprites.add(bullet)
 running = True
 
 while running:
+
+
     clock.tick(fps)
          
          #check events y update
@@ -52,8 +56,10 @@ while running:
                 pressed_up = True
             if event.key == pg.K_DOWN:
                 pressed_down = True
+            if event.key == pg.K_SPACE:
 
-        elif event.type == pg.KEYUP:
+
+        if event.type == pg.KEYUP:
             if event.key == pg.K_LEFT:
                 pressed_left = False
             if event.key == pg.K_RIGHT:
@@ -63,28 +69,31 @@ while running:
             if event.key == pg.K_DOWN:
                 pressed_down = False
 
-    if pressed_up and pressed_right:
-        Player.moveUp(), Player.moveRight()
-    if pressed_up and pressed_left:
-        Player.moveUp(), Player.moveLeft()
-    if pressed_down and pressed_right:
-        Player.moveDown(), Player.moveRight()
-    if pressed_down and pressed_left:
-        Player.moveDown(), Player.moveLeft()
-    if pressed_up:
-        Player.moveUp()
-    if pressed_down:
-        Player.moveDown()
-    if pressed_left:
-        Player.moveLeft()
-    if pressed_right:
-        Player.moveRight()
+        if pressed_up and pressed_right:
+            Player.moveUp(), Player.moveRight()
+        if pressed_up and pressed_left:
+            Player.moveUp(), Player.moveLeft()
+        if pressed_down and pressed_right:
+            Player.moveDown(), Player.moveRight()
+        if pressed_down and pressed_left:
+            Player.moveDown(), Player.moveLeft()
+        if pressed_up:
+            Player.moveUp()
+        if pressed_down:
+            Player.moveDown()
+        if pressed_left:
+            Player.moveLeft()
+        if pressed_right:
+            Player.moveRight()
                            
-    #update todo
-    all_sprites.update()
+        #update todo
+        all_sprites.update()
              
-         #draw en la pantalla
-    all_sprites.draw(gameDisplay)
+        #draw en la pantalla
+        all_sprites.draw(gameDisplay)
+
+        #Updates the display
+        pg.display.flip()
 
 
 

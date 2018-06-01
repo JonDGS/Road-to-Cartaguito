@@ -1,5 +1,6 @@
 import pygame as pg
 
+#Para que una clase loader
 class Loader(pg.sprite.Sprite):
     def __init__(self, image, angle):
         super().__init__()

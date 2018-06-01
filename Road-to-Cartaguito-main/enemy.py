@@ -2,7 +2,7 @@ import pygame as pg
 import loader
 
 
-class eznemy(pg.sprite.Sprite):
+class Enemy(pg.sprite.Sprite):
     def __init__(self, x, y, image):
         super().__init__()
         self.x = x
@@ -11,6 +11,7 @@ class eznemy(pg.sprite.Sprite):
         self.image = loader.load(image)
         self.start = [x, y, self.angle, loader.rotate(self.image, self.angle)]
         self.speed = 0.25
+        self.rect = self.image.image.get_rect()
     #Methods
     def start(self):
         self.x = self.start[0]
