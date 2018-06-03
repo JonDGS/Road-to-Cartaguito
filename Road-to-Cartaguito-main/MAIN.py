@@ -6,11 +6,10 @@ import disparar
 import sys
 import Tools
 
-
-#Inicializar pg
+# Inicializar pg
 pg.init()
 
-#Colors
+# Colors
 white = (255, 255, 255)
 black = (0, 0, 0)
 red = (255, 0, 0)
@@ -24,34 +23,36 @@ displayHeight = 900
 gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
 
-#Creacion de grupo de para todos los sprites del juego
+# Creacion de grupo de para todos los sprites del juego
 all_sprites = pg.sprite.Group()
 
-#Define cada objeto en su respectiva clase
-player = Player.Player()
+# Define cada objeto en su respectiva clase
+player1 = Player.Player()
+player2 = Player.Player()
 enemy = enemy.Enemy()
 bullet = disparar.Disparar()
+obstaculo = Obstaculo.Obstaculo()
 
-#Anade los objetos al grupo total de Sprite
-all_sprites.add(player)
+# Anade los objetos al grupo total de Sprite
+all_sprites.add(player1)
+all_sprites.add(player2)
 all_sprites.add(enemy)
 all_sprites.add(bullet)
-all_sprites.add(Obstaculo)
+all_sprites.add(obstaculo)
 
-#game loop
+# game loop
 running = True
 
 while running:
 
-
     clock.tick(fps)
-         
-         #check events y update
+
+    # check events y update
     for event in pg.event.get():
-        if event.type == pg.QUIT: 
+        if event.type == pg.QUIT:
             sys.exit()
-            
-        elif event.type == pg.KEYDOWN:               
+
+        if event.type == pg.KEYDOWN:
             if event.key == pg.K_LEFT:
                 pressed_left = True
             if event.key == pg.K_RIGHT:
@@ -61,7 +62,7 @@ while running:
             if event.key == pg.K_DOWN:
                 pressed_down = True
             if event.key == pg.K_SPACE:
-
+                pressed_space = True
 
         if event.type == pg.KEYUP:
             if event.key == pg.K_LEFT:
@@ -72,6 +73,8 @@ while running:
                 pressed_up = False
             if event.key == pg.K_DOWN:
                 pressed_down = False
+            if event.key == pg.K_SPACE:
+                pressed_space = False
 
         if pressed_up and pressed_right:
             Player.moveUp(), Player.moveRight()
@@ -89,20 +92,17 @@ while running:
             Player.moveLeft()
         if pressed_right:
             Player.moveRight()
-                           
-        #update todo
+        if pressed_space:
+            Player.disparar()
+
+        # update todo
         all_sprites.update()
-             
-        #draw en la pantalla
+
+        # draw en la pantalla
         all_sprites.draw(gameDisplay)
 
-        #Updates the display
+        # Updates the display
         pg.display.flip()
-
-
-
 
 pg.quit()
 quit()
-
-

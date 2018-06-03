@@ -9,121 +9,122 @@ class Player(pg.sprite.Sprite):
         self.y = y
         self.angulo = angulo
         self.score = score
-        self.maxSpeed = 5
+        self.self.maxSpeed = 5
         self.delta = 0.25
         self.img_player = img
         self.rect = self.img_player.image.get_rect()
-
-    #def update()
-
+        self.maxSpeed = 0
+        self.delaS = 0
+        self.rect.x = 600
+        self.rect.y = 400
 
     def moveUp(self):
-        if abs(self.xSpeed) + abs(self.ySpeed) >= maxspeed:
-                if abs(self.xSpeed) >= maxspeed:
+        if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
+                if abs(self.xSpeed) >= self.maxspeed:
                     if self.xSpeed > 0:               
-                        self.xSpeed -= deltaS         
-                        self.ySpeed -= deltaS            #delta Velocidad 
+                        self.xSpeed -= self.deltaS
+                        self.ySpeed -= self.deltaS            #delta Velocidad
                     else:                                #px/fps
-                        self.xSpeed += deltaS            #      ^
-                        self.ySpeed -= deltaS            #  8 - |          | 
-                elif abs(self.ySpeed)>= maxspeed:        #  7 - |\         |
+                        self.xSpeed += self.deltaS            #      ^
+                        self.ySpeed -= self.deltaS            #  8 - |          |
+                elif abs(self.ySpeed)>= self.maxspeed:        #  7 - |\         |
                     if self.ySpeed > 0:                  #  6 - | \        |
-                        self.ySpeed -= deltaS            #  5 - |\ \       /
-                    else: self.ySpeed = (maxspeed) * -1  #  4 - | \ \     /|
+                        self.ySpeed -= self.deltaS            #  5 - |\ \       /
+                    else: self.ySpeed = (self.maxspeed) * -1  #  4 - | \ \     /|
                 else:                                    #  3 - |  \ \   / |
-                    self.ySpeed -= deltaS                #  2 - |   \ \ /  |
+                    self.ySpeed -= self.deltaS                #  2 - |   \ \ /  |
                     if self.xSpeed > 0:                  #  1 - |    \ X   |
-                        self.xSpeed -= deltaS            #  0 - |---- X-\--| 
+                        self.xSpeed -= self.deltaS            #  0 - |---- X-\--|
                     elif self.xSpeed < 0:                # -1 - |    / \ \ |
-                        self.xSpeed += deltaS            # -2 - |   /   \ \|
+                        self.xSpeed += self.deltaS            # -2 - |   /   \ \|
                     else:                                # -3 - |  /     \ |
                         self.xSpeed = 0                  # -4 - | /       \|
         else:                                        # -5 - |/.........\......>  tiempo*
-            self.ySpeed -= deltaS
+            self.ySpeed -= self.deltaS
 
 
     def moveDown(self):
-        if abs(self.xSpeed) + abs(self.ySpeed) >= maxspeed:
-                if abs(self.xSpeed) >= maxspeed:
+        if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
+                if abs(self.xSpeed) >= self.maxspeed:
                     if self.xSpeed > 0:                
-                        self.xSpeed -= deltaS         
-                        self.ySpeed += deltaS         
+                        self.xSpeed -= self.deltaS
+                        self.ySpeed += self.deltaS
                     else:                             
-                        self.xSpeed += deltaS         
-                        self.ySpeed += deltaS         
-                elif abs(self.ySpeed)>= maxspeed:        
+                        self.xSpeed += self.deltaS
+                        self.ySpeed += self.deltaS
+                elif abs(self.ySpeed)>= self.maxspeed:
                     if self.ySpeed < 0:
-                        self.ySpeed += deltaS
+                        self.ySpeed += self.deltaS
                     else:
-                        self.ySpeed = maxspeed
+                        self.ySpeed = self.maxspeed
                 else:                                       
-                    self.ySpeed += deltaS                   
+                    self.ySpeed += self.deltaS
                     if self.xSpeed > 0:                     
-                        self.xSpeed -= deltaS               
+                        self.xSpeed -= self.deltaS
                     elif self.xSpeed < 0:                 
-                        self.xSpeed += deltaS                
+                        self.xSpeed += self.deltaS
                     else:                                                
                         self.xSpeed = 0                             
         else:                                             
-            self.ySpeed += deltaS
+            self.ySpeed += self.deltaS
 
 
     def moveLeft(self):
-        if abs(self.xSpeed) + abs(self.ySpeed) >= maxspeed:
-                if abs(self.ySpeed) >= maxspeed:
+        if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
+                if abs(self.ySpeed) >= self.maxspeed:
                     if self.ySpeed > 0:               
-                        self.ySpeed -= deltaS         
-                        self.xSpeed -= deltaS        
+                        self.ySpeed -= self.deltaS
+                        self.xSpeed -= self.deltaS
                     else:                           
-                        self.ySpeed += deltaS         
-                        self.xSpeed -= deltaS         
-                elif abs(self.xSpeed)>= maxspeed:    
+                        self.ySpeed += self.deltaS
+                        self.xSpeed -= self.deltaS
+                elif abs(self.xSpeed)>= self.maxspeed:
                     if self.xSpeed > 0:              
-                        self.xSpeed -= deltaS      
+                        self.xSpeed -= self.deltaS
                     else:
-                        self.xSpeed = (maxspeed) * -1
+                        self.xSpeed = (self.maxspeed) * -1
                         self.ySpeed = 0
                 else:                               
-                    self.xSpeed -= deltaS            
+                    self.xSpeed -= self.deltaS
                     if self.ySpeed > 0:             
-                        self.ySpeed -= deltaS       
+                        self.ySpeed -= self.deltaS
                     elif self.ySpeed < 0:            
-                        self.ySpeed += deltaS       
+                        self.ySpeed += self.deltaS
                     else:                          
                         self.ySpeed = 0               
         else:
-            self.xSpeed -= deltaS
+            self.xSpeed -= self.deltaS
 
 
     def moveRight(self):
-        if abs(self.xSpeed) + abs(self.ySpeed) >= maxspeed:
-                if abs(self.ySpeed) >= maxspeed:
+        if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
+                if abs(self.ySpeed) >= self.maxspeed:
                     if self.ySpeed > 0:                
-                        self.ySpeed -= deltaS         
-                        self.xSpeed += deltaS         
+                        self.ySpeed -= self.deltaS
+                        self.xSpeed += self.deltaS
                     else:                             
-                        self.ySpeed += deltaS         
-                        self.xSpeed += deltaS         
-                elif abs(self.xSpeed)>= maxspeed:        
+                        self.ySpeed += self.deltaS
+                        self.xSpeed += self.deltaS
+                elif abs(self.xSpeed)>= self.maxspeed:
                     if self.xSpeed < 0:
-                        self.xSpeed += deltaS
+                        self.xSpeed += self.deltaS
                     else:
-                        self.xSpeed = maxspeed
+                        self.xSpeed = self.maxspeed
                         self.ySpeed = 0
                 else:                                       
-                    self.xSpeed += deltaS                   
+                    self.xSpeed += self.deltaS
                     if self.ySpeed > 0:                     
-                        self.ySpeed -= deltaS               
+                        self.ySpeed -= self.deltaS
                     elif self.ySpeed < 0:                 
-                        self.ySpeed += deltaS                
+                        self.ySpeed += self.deltaS
                     else:                                                
                         self.ySpeed = 0                             
         else:                                             
-            self.xSpeed += deltaS
+            self.xSpeed += self.deltaS
 
 
     def disparar(self):
-        Disparar.bala(x, y, angulo)
+        Disparar.bala(self.x, self.y, self.angulo)
 
 
     def scoreUp(self):
@@ -131,7 +132,7 @@ class Player(pg.sprite.Sprite):
 
 
     def rotar(self):
-        pygame.transform.rotate(self.img_player, self.angle)
+        pg.transform.rotate(self.img_player, self.angle)
         
 
 
