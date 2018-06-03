@@ -24,15 +24,19 @@ displayHeight = 900
 gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
 
+#Creacion de grupo de para todos los sprites del juego
 all_sprites = pg.sprite.Group()
 
+#Define cada objeto en su respectiva clase
 player = Player.Player()
 enemy = enemy.Enemy()
 bullet = disparar.Disparar()
 
+#Anade los objetos al grupo total de Sprite
 all_sprites.add(player)
 all_sprites.add(enemy)
 all_sprites.add(bullet)
+all_sprites.add(Obstaculo)
 
 #game loop
 running = True
