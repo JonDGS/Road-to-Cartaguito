@@ -8,7 +8,8 @@ class Obstaculo(pg.sprite.Sprite):
         self.x = x
         self.y = y
         self.image = loader.load(image)
+        self.rect = self.image.get_rect()
         self.angle = angle
 
     def rotar(self):
-        loader.rotate(self.image, self.angle)
+        self.image = loader.rotate(self.image, self.angle)

@@ -1,6 +1,6 @@
 import pygame as pg
-import Loader
-import 
+import loader
+import bullet
 
 class Player(pg.sprite.Sprite):
     def __init__(self, x, y, angle, score, img):
@@ -9,9 +9,10 @@ class Player(pg.sprite.Sprite):
         self.y = y
         self.angle = angle
         self.score = score
+        self.start = [self.x, self.y, self.angle, self.score, self.img_player]
         self.self.maxSpeed = 5
         self.delta = 0.25
-        self.img_player = img
+        self.img_player = loader.load(self.image)
         self.rect = self.img_player.image.get_rect()
         self.maxSpeed = 0
         self.delaS = 0
@@ -120,13 +121,13 @@ class Player(pg.sprite.Sprite):
             self.xSpeed += self.deltaS
 
     def disparar(self):
-        Disparar.bala(self.x, self.y, self.angle)
+        bullet.bala(self.x, self.y, self.angle)
 
     def scoreUp(self):
         self.score += 1
 
     def rotar(self):
-        pg.transform.rotate(self.img_player, self.angle)
+        self.image = loader.rotate(self.image, self.angle)
         
 
 
