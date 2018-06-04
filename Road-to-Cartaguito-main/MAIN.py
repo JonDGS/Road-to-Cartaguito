@@ -2,11 +2,10 @@ import pygame as pg
 import loader
 import enemy
 import Player
-import disparar
-#Para que se esta importando sys?
-import sys
+import bullet
 import Obstaculo
 import Tools
+import os
 
 # Inicializar pg
 pg.init()
@@ -20,16 +19,23 @@ blue = (0, 0, 255)
 
 fps = 30
 
-displayWidth = 1200
-displayHeight = 900
+displayWidth = 1280
+displayHeight = 720
 gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
+game_folder = os.path.dirname(__file__)
+img_folder = os.path.join(game_folder, "img_folder")
+mapa = pg.image.load(os.path.join(img_folder, "track.jpg")).convert()
+player1_img = pg.image.load(os.path.join(img_folder, "testcar1.png")).convert()
+player2_img = pg.image.load(os.path.join(img_folder, "testcar2.png")).convert()
 
 # Creacion de grupo de para todos los sprites del juego
 all_sprites = pg.sprite.Group()
 
 # Define cada objeto en su respectiva clase
-player1 = Player.Player(0, 0, 0, 0)
+
+                       #x,y, angle, score, img
+player1 = Player.Player(20, 20, 0, 0, player1_img)
 player2 = Player.Player()
 enemy = enemy.Enemy()
 bullet = disparar.Disparar()
@@ -97,13 +103,14 @@ while running:
         if pressed_space:
             Player.disparar()
 
-        # update todo
+        # update all
         all_sprites.update()
 
         # draw en la pantalla
+        gameDisplay.fill(mapa)
         all_sprites.draw(gameDisplay)
 
-        # Updates the display
+        # flips the display
         pg.display.flip()
 
 pg.quit()
