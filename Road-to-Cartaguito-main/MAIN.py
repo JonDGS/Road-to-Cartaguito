@@ -3,7 +3,9 @@ import loader
 import enemy
 import Player
 import disparar
+#Para que se esta importando sys?
 import sys
+import Obstaculo
 import Tools
 
 # Inicializar pg
@@ -27,7 +29,7 @@ clock = pg.time.Clock()
 all_sprites = pg.sprite.Group()
 
 # Define cada objeto en su respectiva clase
-player1 = Player.Player()
+player1 = Player.Player(0, 0, 0, 0)
 player2 = Player.Player()
 enemy = enemy.Enemy()
 bullet = disparar.Disparar()
