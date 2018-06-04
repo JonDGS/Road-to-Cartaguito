@@ -3,13 +3,16 @@ import loader
 import enemy
 import Player
 import disparar
-#Para que se esta importando sys?
+# Para que se esta importando sys?
 import sys
 import Obstaculo
 import Tools
 
 # Inicializar pg
 pg.init()
+
+# Cargar imagenes de background
+
 
 # Colors
 white = (255, 255, 255)
@@ -20,8 +23,8 @@ blue = (0, 0, 255)
 
 fps = 30
 
-displayWidth = 1200
-displayHeight = 900
+displayWidth = 960
+displayHeight = 720
 gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
 
@@ -102,6 +105,9 @@ while running:
 
         # draw en la pantalla
         all_sprites.draw(gameDisplay)
+
+        # Hace blit al background
+        gameDisplay.blit
 
         # Updates the display
         pg.display.flip()
