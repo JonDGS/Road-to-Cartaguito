@@ -2,13 +2,22 @@ import pygame as pg
 import loader
 import enemy
 import Player
+<<<<<<< HEAD
 import bullet
+=======
+import disparar
+# Para que se esta importando sys?
+import sys
+>>>>>>> fc246b8e6b188df8ae808c22f7731c44b0077a09
 import Obstaculo
 import Tools
 import os
 
 # Inicializar pg
 pg.init()
+
+# Cargar imagenes de background
+
 
 # Colors
 white = (255, 255, 255)
@@ -19,7 +28,11 @@ blue = (0, 0, 255)
 
 fps = 30
 
+<<<<<<< HEAD
 displayWidth = 1280
+=======
+displayWidth = 960
+>>>>>>> fc246b8e6b188df8ae808c22f7731c44b0077a09
 displayHeight = 720
 gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
@@ -110,7 +123,14 @@ while running:
         gameDisplay.fill(mapa)
         all_sprites.draw(gameDisplay)
 
+<<<<<<< HEAD
         # flips the display
+=======
+        # Hace blit al background
+        gameDisplay.blit
+
+        # Updates the display
+>>>>>>> fc246b8e6b188df8ae808c22f7731c44b0077a09
         pg.display.flip()
 
 pg.quit()
