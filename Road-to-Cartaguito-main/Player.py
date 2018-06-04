@@ -1,13 +1,13 @@
 import pygame as pg
 import Loader
-import Disparar
+import 
 
 class Player(pg.sprite.Sprite):
-    def __init__(self, x, y, angulo, score, img):
+    def __init__(self, x, y, angle, score, img):
         super().__init__()
         self.x = x
         self.y = y
-        self.angulo = angulo
+        self.angle = angle
         self.score = score
         self.self.maxSpeed = 5
         self.delta = 0.25
@@ -42,7 +42,6 @@ class Player(pg.sprite.Sprite):
         else:                                        # -5 - |/.........\......>  tiempo*
             self.ySpeed -= self.deltaS
 
-
     def moveDown(self):
         if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
                 if abs(self.xSpeed) >= self.maxspeed:
@@ -67,7 +66,6 @@ class Player(pg.sprite.Sprite):
                         self.xSpeed = 0                             
         else:                                             
             self.ySpeed += self.deltaS
-
 
     def moveLeft(self):
         if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
@@ -95,7 +93,6 @@ class Player(pg.sprite.Sprite):
         else:
             self.xSpeed -= self.deltaS
 
-
     def moveRight(self):
         if abs(self.xSpeed) + abs(self.ySpeed) >= self.maxspeed:
                 if abs(self.ySpeed) >= self.maxspeed:
@@ -122,14 +119,11 @@ class Player(pg.sprite.Sprite):
         else:                                             
             self.xSpeed += self.deltaS
 
-
     def disparar(self):
-        Disparar.bala(self.x, self.y, self.angulo)
-
+        Disparar.bala(self.x, self.y, self.angle)
 
     def scoreUp(self):
         self.score += 1
-
 
     def rotar(self):
         pg.transform.rotate(self.img_player, self.angle)
