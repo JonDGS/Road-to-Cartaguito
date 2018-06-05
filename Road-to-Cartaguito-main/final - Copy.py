@@ -19,7 +19,7 @@ gameDisplay = pg.display.set_mode((displayWidth, displayHeight))
 clock = pg.time.Clock()
 game_folder = os.path.dirname(__file__)
 img_folder = os.path.join(game_folder, "img_folder")
-mapa = pg.image.load(os.path.join(img_folder, "track.jpg")).convert()
+mapa = pg.image.load(os.path.join(img_folder, "track2,0.jpg")).convert()
 player1_img = pg.image.load(os.path.join(img_folder, "testcar1.png")).convert()
 player2_img = pg.image.load(os.path.join(img_folder, "testcar2.png")).convert()
 
@@ -241,7 +241,7 @@ while running:
 
         # draw en la pantalla
         gameDisplay.blit(mapa, (0,0))
-        all_sprites.draw(gameDisplay)
+        #all_sprites.draw(gameDisplay)
 
         # flips the display
         pg.display.flip()
