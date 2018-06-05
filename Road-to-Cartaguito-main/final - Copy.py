@@ -241,7 +241,7 @@ while running:
 
         # draw en la pantalla
         gameDisplay.blit(mapa, (0,0))
-        #all_sprites.draw(gameDisplay)
+        all_sprites.draw(gameDisplay)
 
         # flips the display
         pg.display.flip()
