@@ -9,10 +9,10 @@ class Player(pg.sprite.Sprite):
         self.y = y
         self.angle = angle
         self.score = score
+        self.img_player = loader.load(img)
         self.start = [self.x, self.y, self.angle, self.score, self.img_player]
         self.self.maxSpeed = 5
         self.delta = 0.25
-        self.img_player = loader.load(self.image)
         self.rect = self.img_player.image.get_rect()
         self.maxspeed = 0
         self.delaS = 0
