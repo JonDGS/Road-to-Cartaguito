@@ -38,7 +38,7 @@ all_sprites = pg.sprite.Group()
 player1 = Player.Player(20, 20, 0, 0, player1_img)
 player2 = Player.Player()
 enemy = enemy.Enemy()
-bullet = disparar.Disparar()
+bullet = bullet.Disparar()
 obstaculo = Obstaculo.Obstaculo()
 
 # Anade los objetos al grupo total de Sprite

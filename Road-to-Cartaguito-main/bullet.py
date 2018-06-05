@@ -16,6 +16,10 @@ class Bullet(pg.sprite.Sprite):
         self.image = loader.load(image)
         self.rect = self.image.get_rect()
 
+    def disparar(self):
+        if self.x > 0:
+            x
+
     def disappear(self):
         if self.rect.top > MAIN.S_height:
             self.kill()
