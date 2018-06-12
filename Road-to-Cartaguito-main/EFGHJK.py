@@ -7,6 +7,7 @@ import sys
 displayWidth = 1280
 displayHeight = 720
 
+def run(boolean):
 running = True
 while not running: 
     pygame.init()
@@ -42,13 +43,11 @@ def main():
             pygame.display.update()
             clock.tick(30)
 
-        main()
-
-    def on_track(sprite):
-        #Ver el color de pista bajo el carro y determina si esta en la pista o no.
-        if sprite.x > 1 and sprite.x < displayWidth - 1 and sprite.y > 1 and sprite.y < displayHeight - 1:
-            if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
-                return True
+def on_track(sprite):
+    #Ver el color de pista bajo el carro y determina si esta en la pista o no.
+    if sprite.x > 1 and sprite.x < displayWidth - 1 and sprite.y > 1 and sprite.y < displayHeight - 1:
+        if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
+            return True
         return False
 
     class Car(object):
@@ -177,5 +176,5 @@ boton2.place(x=displayWidth * (952/1280), y=displayHeight * 0.8)
 #???
 top.mainloop()
 
-
+main()
 
