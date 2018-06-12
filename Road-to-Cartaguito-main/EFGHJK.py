@@ -7,17 +7,20 @@ import sys
 displayWidth = 1280
 displayHeight = 720
 
+SCREEN = 0
+clock = 0
+
+running = False
+
+#pygame.display.set_caption('Screen Wrapping')
+
+
+track = 0
+
 def run(boolean):
     running1 = boolean
     while not running1: 
         pygame.init()
-        SCREEN = pygame.display.set_mode((displayWidth,displayHeight))
-        clock = pygame.time.Clock()
-
-        pygame.display.set_caption('Screen Wrapping')
-
-
-        track = pygame.image.load('Track.png').convert()
 
 def main():
 
@@ -25,11 +28,22 @@ def main():
 
     run(False)
 
+    global running
     running = True
     
     car1   = Car()
 
-    while running == True:
+    while running:
+        global SCREEN
+        global clock
+        global track
+        SCREEN = pygame.display.set_mode((displayWidth,displayHeight))
+        clock = pygame.time.Clock()
+
+        pygame.display.set_caption('Screen Wrapping')
+
+
+        track = pygame.image.load('Track.png').convert()
         #Blit the track to the background
         SCREEN.blit(track, (0, 0))
 
