@@ -161,6 +161,21 @@ def seleccion_de_modos():
     but7.place(x=200,y=400)
     but8=Button(modos, text = "otras posibles pokemadres", command = main, bg = "green", fg = "white", width = 32, height = 4)
     but8.place(x=200,y=600)
+    player1n1=Text(modos,height=2,width=30)
+    player1n1.pack()
+    player1n1.place(x=500,y=230)
+    p1_name_mode1 = player1n1.get("1.0",'end-1c')
+    print(p1_name_mode1)
+
+    player1n2=Text(modos,height=2,width=30)
+    player1n2.pack()
+    player1n2.place(x=500,y=430)
+    p1_name_mode2 = player1n2.get("1.0",'end-1c')
+    
+    player2n2=Text(modos,height=2,width=30)
+    player2n2.pack()
+    player2n2.place(x=800,y=430)
+    p2_name_mode2 = player2n2.get("1.0",'end-1c')
     modos.mainloop()
 
 def configuraciones():
