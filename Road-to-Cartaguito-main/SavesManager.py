@@ -10,7 +10,7 @@ def compare(data):
 	x = data['players'][4]['total']
 	y = data['players'][4]['laps']
 	z = data['players'][4]['hits']
-	i = 0
+	i = -1
 	for leader in data['players']:
 		i += 1
 		if x > leader['total']:
@@ -20,9 +20,9 @@ def compare(data):
 			x = data['players'][i]['total']
 			y = data['players'][i]['laps']
 			z = data['players'][i]['hits']
-			data['players'][i]['total'] = data['players'][a]['total']
-			data['players'][i]['laps'] = data['players'][b]['laps']
-			data['players'][i]['hits'] = data['players'][c]['hits']
+			data['players'][i]['total'] = a
+			data['players'][i]['laps'] = b
+			data['players'][i]['hits'] = c
 		elif x == leader['total']:
 			if y > leader['laps']:
 				a = x
@@ -31,9 +31,9 @@ def compare(data):
 				x = data['players'][i]['total']
 				y = data['players'][i]['laps']
 				z = data['players'][i]['hits']
-				data['players'][i]['total'] = data['players'][a]['total']
-				data['players'][i]['laps'] = data['players'][b]['laps']
-				data['players'][i]['hits'] = data['players'][c]['hits']
+				data['players'][i]['total'] = a
+				data['players'][i]['laps'] = b
+				data['players'][i]['hits'] = c
 			elif y == leader['laps']:
 				if z > leader['hits']:
 					a = x
@@ -42,9 +42,9 @@ def compare(data):
 					x = data['players'][i]['total']
 					y = data['players'][i]['laps']
 					z = data['players'][i]['hits']
-					data['players'][i]['total'] = data['players'][a]['total']
-					data['players'][i]['laps'] = data['players'][b]['laps']
-					data['players'][i]['hits'] = data['players'][c]['hits']
+					data['players'][i]['total'] = a
+					data['players'][i]['laps'] = b
+					data['players'][i]['hits'] = c
 				elif z == leader['hits'] or z < leader['hits']:
 					pass
 			else:
