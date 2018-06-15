@@ -24,10 +24,8 @@ def on_track(sprite):
             return True
     return False
 
-def main():
-    car1   = car.Car((53, 370), 90, 'Car1.png', [K_LEFT, K_RIGHT, K_UP, K_DOWN])
-    car2   = car.Car((83, 370), 90, 'Car.png', [K_a, K_d, K_w, K_s])
-
+def level_one():
+    running = True
     while True:
         #Blit the track to the background
         SCREEN.blit(track, (0, 0))
@@ -52,5 +50,12 @@ def main():
 
         pygame.display.update()
         FPS.tick(30)
+
+
+def main():
+    car1   = car.Car((53, 370), 90, 'Car1.png', [K_LEFT, K_RIGHT, K_UP, K_DOWN], 'Test1', 0, 0, 0)
+    car2   = car.Car((83, 370), 90, 'Car.png', [K_a, K_d, K_w, K_s], 'Test2', 0, 0, 0)
+
+    level_one()
 
 if __name__ == '__main__': main()
