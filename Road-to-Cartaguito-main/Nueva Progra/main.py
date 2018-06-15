@@ -15,9 +15,9 @@ FPS    = pygame.time.Clock()
 
 pygame.display.set_caption('road to cartaguito')
 
-track = pygame.image.load('track.png').convert()
-track2 = pygame.image.load('track2.png').convert()
-track3 = pygame.image.load('track3.png').convert()
+track = pygame.image.load('track2.png').convert()
+track2 = pygame.image.load('track3.png').convert()
+track3 = pygame.image.load('track.png').convert()
 
 
 class Car(pygame.sprite.Sprite):
@@ -112,7 +112,11 @@ def level_three(car1, car2):
         car2.angle = 180
     car1.angle = 180
     running = True
+    t = pygame.time.get_ticks()
     while running:
+        seconds = (pygame.time.get_ticks() - t) / 1000
+        if seconds > 10:
+            running = False
         #Blit the track to the background
         SCREEN.blit(track3, (0, 0))
         #print(car1.self)
@@ -134,6 +138,7 @@ def level_three(car1, car2):
             car2.move()
             car2.wrap()
             car2.render()
+        menus.mostrarTexto('Time: ' + str(int(180-seconds)), 50, 25,15, menus.red)
 
         pygame.display.update()
         FPS.tick(30)
@@ -143,14 +148,19 @@ def level_three(car1, car2):
 #Loop del nivel 1
 def level_two(car1, car2):
     car1.x, car1.y = (370, 47)
-    if car != False:
+    if car2 != False:
         car2.x, car2.y = (370, 77)
         car2.angle = 0
     else:
         car2 = False
     car1.angle = 0
-    running = True  
+    running = True
+    t = pygame.time.get_ticks()
     while running:
+        seconds = (pygame.time.get_ticks() - t) / 1000
+        if seconds > 10:
+            running = False
+            level_three(car1, car2)
         #Blit the track to the background
         SCREEN.blit(track2, (0, 0))
         #print(car1.self)
@@ -172,7 +182,7 @@ def level_two(car1, car2):
             car2.move()
             car2.wrap()
             car2.render()
-
+        menus.mostrarTexto('Time: ' + str(int(180-seconds)), 50, 25,15, menus.red)
         pygame.display.update()
         FPS.tick(30)
     level_three(car1, car2)
@@ -184,7 +194,12 @@ def level_one(car1, car2):
         car2.angle = 90
     car1.angle = 90
     running = True
+    t = pygame.time.get_ticks()
     while running:
+        seconds = (pygame.time.get_ticks() - t) / 1000
+        if seconds > 10:
+            running = False
+            level_two(car1, car2)
         #Blit the track to the background
         SCREEN.blit(track, (0, 0))
         #print(car1.self)
@@ -206,7 +221,7 @@ def level_one(car1, car2):
             car2.move()
             car2.wrap()
             car2.render()
-
+        menus.mostrarTexto('Time: ' + str(int(180-seconds)), 50, 25,15, menus.red)
         pygame.display.update()
         FPS.tick(30)
     level_two(car1, car2)
@@ -216,7 +231,7 @@ def main(user1, user2):
     #menus.menus()
     car1  = Car((0, 0), 0, 'Car1.png', [K_LEFT, K_RIGHT, K_UP, K_DOWN], user1, 0, 0, 0)
     if user2 != False:
-        car2  = Car((0, 0), 0, 'Car.png', [K_a, K_d, K_w, K_s], 'user2', 0, 0, 0)
+        car2  = Car((0, 0), 0, 'Car.png', [K_a, K_d, K_w, K_s], user2, 0, 0, 0)
     else:
         car2 = user2
     level_one(car1, car2)

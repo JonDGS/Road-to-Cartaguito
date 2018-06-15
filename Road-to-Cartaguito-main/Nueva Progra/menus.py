@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from math import *
 import main
+import json
 
 #Archivo json
 with open("SaveFile.json", "r") as f:
@@ -55,7 +56,7 @@ IngresoBack = pygame.image.load('cr.png')
 InBack = pygame.transform.scale(IngresoBack, (800, 600))
 
 
-#music_menu = pygame.mixer.music.load('Stuff.wav')
+music_menu = pygame.mixer.music.load('Stuff.wav')
 
 # Define la superficie y font para el texto
 def text_in_menu(text, color, font):
