@@ -16,15 +16,28 @@ pygame.display.set_caption('road to cartaguito')
 track = pygame.image.load('track.png').convert()
 
 
-
-def on_track(sprite):
-    #Ver el color de pista bajo el carro y determina si esta en la pista o no.
-    if sprite.x > 1 and sprite.x < WIDTH - 1 and sprite.y > 1 and sprite.y < HEIGHT - 1:
-        if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
-            return True
-    return False
-
-def level_one():
+#Funcion que sabe si el vehiculo esta en la pista o fuera de ella
+def on_track(sprite, con1, con2, con3):
+    #Condiciones para cada nivel
+    if con1 and not con2 and not con3:
+        if sprite.x > 1 and sprite.x < WIDTH - 1 and sprite.y > 1 and sprite.y < HEIGHT - 1:
+            if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
+                return True
+        return False
+    if con1 and con2 and not con3:
+        if sprite.x > 1 and sprite.x < WIDTH - 1 and sprite.y > 1 and sprite.y < HEIGHT - 1:
+            if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
+                return True
+        return False
+    if con1 and not con2 and con3:
+        if sprite.x > 1 and sprite.x < WIDTH - 1 and sprite.y > 1 and sprite.y < HEIGHT - 1:
+            if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
+                return True
+        return False
+#Loop del nivel 1
+def level_one(car1, car2):
+    car1.first_level = True
+    car2.first_level = True
     running = True
     while True:
         #Blit the track to the background
@@ -51,11 +64,11 @@ def level_one():
         pygame.display.update()
         FPS.tick(30)
 
-
+#Loop princioal del juego
 def main():
     car1   = car.Car((53, 370), 90, 'Car1.png', [K_LEFT, K_RIGHT, K_UP, K_DOWN], 'Test1', 0, 0, 0)
     car2   = car.Car((83, 370), 90, 'Car.png', [K_a, K_d, K_w, K_s], 'Test2', 0, 0, 0)
 
-    level_one()
+    level_one(car1, car2)
 
 if __name__ == '__main__': main()

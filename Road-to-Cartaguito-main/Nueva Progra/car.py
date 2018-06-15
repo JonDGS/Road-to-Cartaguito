@@ -4,7 +4,7 @@ from math import *
 import main
 
 class Car(pygame.sprite.Sprite):
-    def __init__(self, start_pos, start_angle, image, keys):
+    def __init__(self, start_pos, start_angle, image, keys, username, initial_score, initial_laps, initial_hits):
         '''Initialises the Car object'''
         super().__init__()
         self.x     = start_pos[0]
@@ -17,6 +17,12 @@ class Car(pygame.sprite.Sprite):
         self.rotcar   = pygame.transform.rotate(self.image, self.angle)
 
         self.keys = keys
+        self.initial_score = initial_score
+        self.initial_laps = initial_laps
+        self.initial_hits = initial_hits
+        self.first_level = False
+        self.second_level = False
+        self.third_level = False
 
     def move(self, forward_speed = 1, rearward_speed = 0.2):
         '''Moves the car when the arrow keys are pressed'''
@@ -36,7 +42,7 @@ class Car(pygame.sprite.Sprite):
         self.angle %= 359
 
         #Apply friction
-        if main.on_track(self): self.speed *= 0.95
+        if main.on_track(self, self.first_level, self.second_level, self.third_level): self.speed *= 0.95
         else: self.speed *= 0.75
 
         #Change the position of the car
