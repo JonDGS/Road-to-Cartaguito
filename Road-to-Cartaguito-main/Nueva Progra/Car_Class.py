@@ -41,7 +41,7 @@ class Car(pygame.sprite.Sprite):
         self.angle %= 359
 
         #Apply friction
-        if on_track(self): self.speed *= 0.95
+        if main.on_track(self): self.speed *= 0.95
         else: self.speed *= 0.75
 
         #Change the position of the car
