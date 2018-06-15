@@ -1,0 +1,35 @@
+{
+  "players": [
+    {
+      "username": null,
+      "total": 0,
+      "laps": 0,
+      "hits": 0
+    },
+    {
+      "username": null,
+      "total": 0,
+      "laps": 0,
+      "hits": 0
+    },
+    {
+      "username": null,
+      "total": 0,
+      "laps": 0,
+      "hits": 0
+    },
+    {
+      "username": null,
+      "total": 0,
+      "laps": 0,
+      "hits": 0
+    },
+    {
+      "username": null,
+      "total": 0,
+      "laps": 0,
+      "hits": 0
+    }
+  ]
+}
+

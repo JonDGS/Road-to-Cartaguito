@@ -20,9 +20,8 @@ class Car(pygame.sprite.Sprite):
         self.initial_score = initial_score
         self.initial_laps = initial_laps
         self.initial_hits = initial_hits
-        self.first_level = False
-        self.second_level = False
-        self.third_level = False
+        self.goal = 0
+        self.check = 0
 
     def move(self, forward_speed = 1, rearward_speed = 0.2):
         '''Moves the car when the arrow keys are pressed'''
@@ -42,7 +41,7 @@ class Car(pygame.sprite.Sprite):
         self.angle %= 359
 
         #Apply friction
-        if main.on_track(self, self.first_level, self.second_level, self.third_level): self.speed *= 0.95
+        if main.on_track(self): self.speed *= 0.95
         else: self.speed *= 0.75
 
         #Change the position of the car
