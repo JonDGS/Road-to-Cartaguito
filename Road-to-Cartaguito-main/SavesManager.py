@@ -6,10 +6,10 @@ with open("NewSaveFile.json", "r") as f:
 
 
 
-def compare(data):
-	x = data['players'][4]['total']
-	y = data['players'][4]['laps']
-	z = data['players'][4]['hits']
+def compare(data, changes):
+	x = changes[0]
+	y = changes[1]
+	z = changes[2]
 	i = -1
 	for leader in data['players']:
 		i += 1
@@ -88,16 +88,16 @@ def leaderboard(x, y, z):
 				pass
 		else:
 			pass
-	if found == True and changes[0] != 0:
-		for leader in data['players']:
-			i += 1
-			if i == 5:
-				leader['total'] = x
-				leader['laps'] = y
-				leader['hits'] = z
-			else:
-				pass
-		data = compare(data)
+	if found and changes[0] != 0:
+		#for leader in data['players']:
+			#i += 1
+			#if i == 5:
+				#leader['total'] = x
+				#leader['laps'] = y
+				#leader['hits'] = z
+			#else:
+				#pass
+		data = compare(data, changes)
 		json.dump(data, open("NewSaveFile.json", "w"), indent=2)
 	else:
 		pass

@@ -1,34 +1,29 @@
 {
   "players": [
     {
-      "Placeholder": null,
-      "total": 10,
-      "laps": 5,
-      "hits": 5
+      "total": 0,
+      "laps": 0,
+      "hits": 0
     },
     {
-      "Placeholder": null,
-      "total": 9,
-      "laps": 5,
-      "hits": 4
+      "total": 0,
+      "laps": 0,
+      "hits": 0
     },
     {
-      "Placeholder": null,
-      "total": 8,
-      "laps": 5,
-      "hits": 3
+      "total": 0,
+      "laps": 0,
+      "hits": 0
     },
     {
-      "Placeholder": null,
-      "total": 7,
-      "laps": 5,
-      "hits": 2
+      "total": 0,
+      "laps": 0,
+      "hits": 0
     },
     {
-      "Placeholder": null,
-      "total": 7,
-      "laps": 2,
-      "hits": 5
+      "total": 0,
+      "laps": 0,
+      "hits": 0
     }
   ]
 }
