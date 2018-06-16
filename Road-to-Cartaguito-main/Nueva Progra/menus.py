@@ -70,7 +70,7 @@ def mostrarTexto(text, x, y, size, color):
     TSurface, Trect = text_in_menu(text, color, TitleText)
     Trect.center = ((x, y))
     main.SCREEN.blit(TSurface, Trect)
-
+#Recibe los inputs del usernames
 def recover_input2(user1):
     input_box = pygame.Rect(100, 100, 140, 32)
     color_inactive = pygame.Color('lightskyblue3')
@@ -114,6 +114,7 @@ def recover_input2(user1):
         pygame.display.flip()
         clock.tick(30)
 
+#Recibe los inputs del usernames
 def recover_input1jugador(player2):
     input_box = pygame.Rect(100, 100, 140, 32)
     color_inactive = pygame.Color('lightskyblue3')
@@ -195,10 +196,13 @@ def menu1():
                     m1 = False
                     #menus()
         main.SCREEN.blit(scorepng, (0, 0))
+        if True:
+        	mostrarTexto(data['players'][0]['username'], )
         mostrarTexto('Beta release v.0.3', (800 * 0.10), (600 * 0.95), 15, light_green)
         main.FPS.tick(20)
         pygame.display.flip()
 
+#Menu principal
 def menus():
     #pygame.mixer.music.play(-1)
     Menus = True
@@ -230,8 +234,8 @@ def menus():
         main.FPS.tick(20)
         pygame.display.flip()
 
+#Pausa del juego
 def pause_menu():
-    pygame.mixer.music.pause()
     pause = True
     while pause:
         for event in pygame.event.get():
@@ -245,7 +249,6 @@ def pause_menu():
                 else:
                     mostrarTexto('Please press either enter escape to get back to game or m to go to the menus',
                                  (800 * 0.50), (600 * 0.20), 30, red)
-                    wait_x_secs(5)
         main.SCREEN.fill(white)
         main.SCREEN.blit(pause_background, (0, 0))
         mostrarTexto('Pause', (800 * 0.50), (600 * 0.10), 50, black)

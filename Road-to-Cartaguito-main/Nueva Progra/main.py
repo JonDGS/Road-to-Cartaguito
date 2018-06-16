@@ -19,8 +19,9 @@ track = pygame.image.load('track2.png').convert()
 track2 = pygame.image.load('track3.png').convert()
 track3 = pygame.image.load('track.png').convert()
 
-
+#Class Car
 class Car(pygame.sprite.Sprite):
+    #Constructor car
     def __init__(self, start_pos, start_angle, image, keys, username, initial_score, initial_laps, initial_hits):
         '''Initialises the Car object'''
         super().__init__()
@@ -34,12 +35,32 @@ class Car(pygame.sprite.Sprite):
         self.rotcar   = pygame.transform.rotate(self.image, self.angle)
 
         self.keys = keys
+        self.username = username
         self.initial_score = initial_score
         self.initial_laps = initial_laps
         self.initial_hits = initial_hits
-        self.goal = 0
         self.check = 0
+        self.first = False
+        self.second = False
+        self.third = False
 
+    #Checks checkpoints
+    def validar_check(self, x, x2, y, angle_range1):
+        if self.x > x and self.x < x2 and self.y == y:
+            if self.check + 1 == self.goal and (self.angle > angle_range1[0] and self.angle < angle_range1[1]):
+                self.check += 1
+            else:
+                self.check -= 1
+
+    #Checks laps
+    def validar_laps(self, x, x2, y, angle_range1):
+        if self.x > x and self.x < x2 and self.y == y:
+            if self.check == self.goal and (self.angle > angle_range1[0] and self.angle < angle_range1[1]):
+                self.goal += 1
+            else:
+                self.goal -= 1
+
+    #Move car
     def move(self, forward_speed = 1, rearward_speed = 0.2):
         '''Moves the car when the arrow keys are pressed'''
         keys = pygame.key.get_pressed()
@@ -58,7 +79,12 @@ class Car(pygame.sprite.Sprite):
         self.angle %= 359
 
         #Apply friction
-        if on_track(self): self.speed *= 0.95
+        if self.first and not self.second and not self.third:
+            if on_track(self, track2): self.speed *= 0.95
+        elif self.first and self.second and not self.third:
+            if on_track(self, track3): self.speed *= 0.95
+        elif self.first and self.second and self.third:
+            if on_track(self, track): self.speed *= 0.95
         else: self.speed *= 0.75
 
         #Change the position of the car
@@ -97,23 +123,29 @@ class Car(pygame.sprite.Sprite):
 
         SCREEN.blit(self.rotcar, self.rotcar.get_rect(center = (self.x, self.y)))
 
-#Funcion que sabe si el vehiculo esta en la pista o fuera de ella
-def on_track(sprite):
-    #Ver el color de pista bajo el carro y determina si esta en la pista o no.
+#Check if car is on track
+def on_track(sprite, track):
+    #Color beneath the car
     if sprite.x > 1 and sprite.x < WIDTH - 1 and sprite.y > 1 and sprite.y < HEIGHT - 1:
         if track.get_at((int(sprite.x), int(sprite.y))).r == 163 or track.get_at((int(sprite.x), int(sprite.y))).r == 0 or track.get_at((int(sprite.x), int(sprite.y))).r == 255:
             return True
     return False
-#Loop del nivel 1
+#Loop del nivel 3
 def level_three(car1, car2):
     car1.x, car1.y = (334, 524)
     if car2 != False:
         car2.x, car2.y = (334, 484)
         car2.angle = 180
+        car2.third = True
     car1.angle = 180
+    car1.third = True
     running = True
     t = pygame.time.get_ticks()
     while running:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    menus.pause_menu()
         seconds = (pygame.time.get_ticks() - t) / 1000
         if seconds > 10:
             running = False
@@ -142,21 +174,29 @@ def level_three(car1, car2):
 
         pygame.display.update()
         FPS.tick(30)
-    SavesManager.leaderboard(car1.username, car1.total, car1.laps, car1.hits)
-    if cars2 != False:
-        SavesManager.leaderboard(car2.username, car2.total, car2.laps, car2.hits)
-#Loop del nivel 1
+    SavesManager.leaderboard(car1.username, car1.initial_score, car1.initial_laps, car1.initial_hits)
+    if car2 != False:
+        SavesManager.leaderboard(car2.username, car2.initial_score, car2.initial_laps, car2.initial_hits)
+    running = False
+    menus.menus()
+#Loop del nivel 2
 def level_two(car1, car2):
     car1.x, car1.y = (370, 47)
     if car2 != False:
         car2.x, car2.y = (370, 77)
         car2.angle = 0
+        car2.second = True
     else:
         car2 = False
     car1.angle = 0
+    car1.second = True
     running = True
     t = pygame.time.get_ticks()
     while running:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    menus.pause_menu()
         seconds = (pygame.time.get_ticks() - t) / 1000
         if seconds > 10:
             running = False
@@ -192,10 +232,16 @@ def level_one(car1, car2):
     if car2 != False:
         car2.x, car2.y = (83, 370)
         car2.angle = 90
+        car2.first = True
     car1.angle = 90
+    car1.first = True
     running = True
     t = pygame.time.get_ticks()
     while running:
+        for event in pygame.event.get():
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    menus.pause_menu()
         seconds = (pygame.time.get_ticks() - t) / 1000
         if seconds > 10:
             running = False

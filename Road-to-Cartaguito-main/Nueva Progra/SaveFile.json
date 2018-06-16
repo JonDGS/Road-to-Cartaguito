@@ -1,22 +1,22 @@
 {
   "players": [
     {
-      "username": null,
-      "total": 0,
-      "laps": 0,
-      "hits": 0
+      "username": "Prueba",
+      "total": 15,
+      "laps": 5,
+      "hits": 10
     },
     {
-      "username": null,
-      "total": 0,
-      "laps": 0,
-      "hits": 0
+      "username": "Ronny",
+      "total": 10,
+      "laps": 5,
+      "hits": 5
     },
     {
-      "username": null,
-      "total": 0,
-      "laps": 0,
-      "hits": 0
+      "username": "L",
+      "total": 10,
+      "laps": 5,
+      "hits": 4
     },
     {
       "username": null,
@@ -32,4 +32,3 @@
     }
   ]
 }
-

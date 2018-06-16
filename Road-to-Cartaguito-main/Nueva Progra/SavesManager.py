@@ -71,11 +71,16 @@ def compare(data, changes):
 
 
 def leaderboard(a, x, y, z):
+	print(a)
+	print(x)
+	print(y)
+	print(z)
 	i = 0
 	found = False
 	changes = ['', 0, 0, 0]
 	global data
 	for leader in data['players']:
+		print('Llego a iteraciones')
 		if not found:
 			if x > leader['total']:
 				changes[0] = a
@@ -104,8 +109,10 @@ def leaderboard(a, x, y, z):
 			else:
 				pass
 		else:
+			print('Encontro un true')
 			pass
 	if found and changes[1] != 0:
+		print('Llego aqui')
 		data = compare(data, changes)
 		json.dump(data, open("SaveFile.json", "w"), indent=2)
 	else:
